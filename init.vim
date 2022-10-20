@@ -87,6 +87,11 @@ nnoremap <Leader>s :let @/=""<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
+" Vim Wiki plugin
+set nocompatible
+filetype plugin on
+syntax on
+
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 "
