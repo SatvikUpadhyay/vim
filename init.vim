@@ -87,6 +87,11 @@ nnoremap <Leader>s :let @/=""<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
+" Common quitting and saving commands
+nnoremap <Leader>q :bd <CR>
+nnoremap <Leader>w :w <CR>
+nnoremap <Leader>wq :wq <CR>
+
 " Vim Wiki plugin
 set nocompatible
 filetype plugin on
