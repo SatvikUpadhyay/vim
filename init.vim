@@ -6,6 +6,7 @@
 :set smarttab
 :set softtabstop=4
 :set mouse=a
+map <Space> <Leader>
 
 set splitbelow splitright
 
@@ -15,6 +16,9 @@ Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'yuezk/vim-js' "Syntax highlighting for JS
 
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
@@ -32,35 +36,54 @@ Plug 'mattn/emmet-vim'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'sheerun/vim-polyglot'
 Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
 Plug 'chun-yang/auto-pairs'
+
+"Git
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+Plug 'vimwiki/vimwiki'
+
+" Commenting stuff out
+Plug 'tpope/vim-commentary'
 
 set encoding=UTF-8
 
 call plug#end()
 
 colorscheme tokyonight
+highlight clear SignColumn
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" Ensures visual mode isn't lost while indenting
+vmap < <gv
+vmap > >gv
 
 " Remap split : Control + hjkl for opening splits
-nnoremap <C-h> <C-w>h
+nnoremap <C-Left> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <C-Right> <C-w>l
 
 " Binding split adjustments
-nnoremap <silent> <C-Left> :vertical resize +3 <CR>
-nnoremap <silent> <C-Right> :vertical resize -3 <CR>
-nnoremap <silent> <C-Up> :resize +3 <CR>
-nnoremap <silent> <C-Down> :resize -3 <CR>
+nnoremap <silent> <A-Left> :vertical resize -3 <CR>
+nnoremap <silent> <A-Right> :vertical resize +3 <CR>
+nnoremap <silent> <A-Up> :resize +3 <CR>
+nnoremap <silent> <A-Down> :resize -3 <CR>
 
 " Changes the kind of separator between splits
 :set fillchars+=vert:\ 
 highlight VertSplit guifg=#a1a1a1
 
-nnoremap <C-t> :NERDTreeFocus<CR>
-nmap <C-z> :NERDTreeToggle<CR>
+nnoremap <Leader>x :NERDTreeFocus<CR>
+nnoremap <C-z> :NERDTreeToggle<CR>
 nnoremap <C-s> :NERDTree<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <C-f> :Buffer<CR>
+nnoremap <Leader>s :let @/=""<CR>
 inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 
